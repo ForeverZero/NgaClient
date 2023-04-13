@@ -25,7 +25,7 @@ public class SubjectInfo {
     private String lastPoster;
     private Integer replies;
     private String error;
-    private Integer type;
+    private Long type;
     @JSONField(name = "forumname")
     private String forumName;
     @JSONField(name = "attachs")
