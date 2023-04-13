@@ -47,6 +47,7 @@ public class NgaUrl {
         public static final String GET_BLOCK_WORD = "get_block_word";
         public static final String CATEGORY = "category";
         public static final String GET = "get";
+        public static final String SEARCH = "search";
     }
 
     public static NgaUrlBuilder builder() {

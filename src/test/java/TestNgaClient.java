@@ -34,4 +34,9 @@ public class TestNgaClient {
     public void testForumFavor2Get() throws IOException, NgaException {
         ngaClient.forumFavor2Get();
     }
+
+    @Test
+    public void testSubjectSearch() throws Exception {
+        ngaClient.subjectSearch(null, "Steam", 0);
+    }
 }

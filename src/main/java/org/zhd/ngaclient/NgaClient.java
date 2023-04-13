@@ -21,6 +21,8 @@ import org.zhd.ngaclient.util.SignUtil;
 import org.zhd.ngaclient.util.TimeUtil;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -88,6 +90,23 @@ public class NgaClient implements INgaClient {
         var paramMap = buildBaseAccessParamMap();
         paramMap.put("t", time);
         paramMap.put("__output", output);
+        paramMap.put("sign", sign);
+        return doPost(url, paramMap, classicHttpResponse -> {
+            byte[] bytes = classicHttpResponse.getEntity().getContent().readAllBytes();
+            return JSON.parseObject(new String(bytes), new TypeReference<>() {});
+        });
+    }
+
+    @Override
+    public NgaPageResponse<SubjectSearchResponse> subjectSearch(Integer forumId, String key, int page) throws IOException, NgaException {
+        key = URLEncoder.encode(key, StandardCharsets.UTF_8);
+        var time = TimeUtil.getTimeStr();
+        String sign = SignUtil.sign(appId, accessUid, accessToken, key, time, secret);
+        final var url = NgaUrl.builder().api(NgaUrl.Api.APP_API).library(NgaUrl.Library.SUBJECT).action(NgaUrl.Action.SEARCH).build();
+        var paramMap = buildBaseAccessParamMap();
+        Optional.ofNullable(forumId).ifPresent(it -> paramMap.put("fid", it + ""));
+        paramMap.put("key", key);
+        paramMap.put("t", time);
         paramMap.put("sign", sign);
         return doPost(url, paramMap, classicHttpResponse -> {
             byte[] bytes = classicHttpResponse.getEntity().getContent().readAllBytes();

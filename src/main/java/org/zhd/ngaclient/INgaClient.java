@@ -1,9 +1,6 @@
 package org.zhd.ngaclient;
 
-import org.zhd.ngaclient.dto.Forum;
-import org.zhd.ngaclient.dto.HomeCategoryV2Response;
-import org.zhd.ngaclient.dto.NgaPageResponse;
-import org.zhd.ngaclient.dto.SubjectListResponse;
+import org.zhd.ngaclient.dto.*;
 import org.zhd.ngaclient.exception.NgaException;
 
 import java.io.IOException;
@@ -33,9 +30,21 @@ public interface INgaClient {
     /**
      * 获取收藏的板块
      *
-     * @return
-     * @throws IOException
-     * @throws NgaException
+     * @return {@link Forum}
+     * @throws IOException  网络异常
+     * @throws NgaException 返回码不为{@link org.zhd.ngaclient.common.NgaResponseCode#SUCCESS}时抛出
      */
     NgaPageResponse<List<Forum>> forumFavor2Get() throws IOException, NgaException;
+
+    /**
+     * 按关键词搜索主题, 中文搜不出来, 待解决
+     *
+     * @param forumId 板块ID，为Null是搜索所有板块
+     * @param key     关键词
+     * @param page    页码
+     * @return {@link SubjectInfo}
+     * @throws IOException  网络异常
+     * @throws NgaException 返回码不为{@link org.zhd.ngaclient.common.NgaResponseCode#SUCCESS}时抛出
+     */
+    NgaPageResponse<SubjectSearchResponse> subjectSearch(Integer forumId, String key, int page) throws IOException, NgaException;
 }
