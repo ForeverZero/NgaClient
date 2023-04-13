@@ -6,11 +6,11 @@
 String accessToken = "" // 登录接口未实现，暂时先自行获取
 String accessUid = "" // 登录接口未实现，暂时先自行获取
 
-// 生成创建Client实例
-INgaClient ngaClient = new NgaClient(token, uid);
+// 创建Client实例
+INgaClient ngaClient = new NgaClient(accessToken, accessUid);
 
 // 调用接口
-ngaClient.homeCategoryV2();
+var result = ngaClient.homeCategoryV2();
 ```
 
 ## 已实现的接口
