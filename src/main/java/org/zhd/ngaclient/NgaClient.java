@@ -15,6 +15,7 @@ import org.zhd.ngaclient.common.NgaConst;
 import org.zhd.ngaclient.common.NgaResponseCode;
 import org.zhd.ngaclient.common.NgaUrl;
 import org.zhd.ngaclient.dto.*;
+import org.zhd.ngaclient.exception.AuditFailedException;
 import org.zhd.ngaclient.exception.InvalidSignException;
 import org.zhd.ngaclient.exception.NgaException;
 import org.zhd.ngaclient.util.SignUtil;
@@ -147,6 +148,7 @@ public class NgaClient implements INgaClient {
         switch (code) {
             case NgaResponseCode.SUCCESS -> {}
             case NgaResponseCode.SIGN_ERROR -> throw new InvalidSignException(msg, code);
+            case NgaResponseCode.AUDIT_FAILED -> throw new AuditFailedException(msg, code);
             default -> throw new NgaException(msg, code);
         }
     }
