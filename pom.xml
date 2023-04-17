@@ -6,7 +6,7 @@
 
     <groupId>org.zhd</groupId>
     <artifactId>nga-client</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
