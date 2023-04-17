@@ -47,4 +47,15 @@ public interface INgaClient {
      * @throws NgaException 返回码不为{@link org.zhd.ngaclient.common.NgaResponseCode#SUCCESS}时抛出
      */
     NgaPageResponse<SubjectSearchResponse> subjectSearch(Integer forumId, String key, int page) throws IOException, NgaException;
+
+    /**
+     * 获取主题下的回复, 第一条为主题的内容
+     *
+     * @param tid 主题ID
+     * @param page 页码
+     * @return {@link PostListResponse}
+     * @throws IOException  网络异常
+     * @throws NgaException 返回码不为{@link org.zhd.ngaclient.common.NgaResponseCode#SUCCESS}时抛出
+     */
+    PostListResponse postList(int tid, int page) throws IOException, NgaException;
 }

@@ -39,4 +39,9 @@ public class TestNgaClient {
     public void testSubjectSearch() throws Exception {
         ngaClient.subjectSearch(null, "Steam", 0);
     }
+
+    @Test
+    void testPostList() throws Exception {
+        ngaClient.postList(35982173, 1);
+    }
 }

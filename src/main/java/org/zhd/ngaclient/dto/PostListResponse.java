@@ -10,7 +10,7 @@ import java.util.List;
 @ToString(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostListResponse extends NgaPageResponse<ThreadReply> {
+public class PostListResponse extends NgaPageResponse<List<ThreadReply>> {
     @JSONField(name = "tsubject")
     private String tSubject;
     @JSONField(name = "tmisc_bit1")

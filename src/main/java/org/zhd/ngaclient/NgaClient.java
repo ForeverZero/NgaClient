@@ -115,6 +115,22 @@ public class NgaClient implements INgaClient {
         });
     }
 
+    @Override
+    public PostListResponse postList(int tid, int page) throws IOException, NgaException {
+        var time = TimeUtil.getTimeStr();
+        String sign = SignUtil.sign(appId, accessUid, accessToken, tid + "", time, secret);
+        final var url = NgaUrl.builder().api(NgaUrl.Api.APP_API).library(NgaUrl.Library.POST).action(NgaUrl.Action.LIST).build();
+        HashMap<String, String> paramMap = buildBaseAccessParamMap();
+        paramMap.put("t", time);
+        paramMap.put("tid", tid + "");
+        paramMap.put("sign", sign);
+        paramMap.put("page", page + "");
+        return doPost(url, paramMap, classicHttpResponse -> {
+            byte[] bytes = classicHttpResponse.getEntity().getContent().readAllBytes();
+            return JSON.parseObject(new String(bytes), new TypeReference<>() {});
+        });
+    }
+
     private HashMap<String, String> buildBaseAccessParamMap() {
         var paramMap = new HashMap<String, String>();
         paramMap.put("access_token", accessToken);

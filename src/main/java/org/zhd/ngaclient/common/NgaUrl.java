@@ -34,6 +34,7 @@ public class NgaUrl {
         public static final String HOME = "home";
         public static final String FORUM_FAVOR_2 = "forum_favor2";
         public static final String SUBJECT = "subject";
+        public static final String POST = "post";
     }
 
     public static class Action {
