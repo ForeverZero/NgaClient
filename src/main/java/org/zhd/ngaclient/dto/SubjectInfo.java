@@ -34,5 +34,6 @@ public class SubjectInfo {
     private Boolean setFlag = false;
     @JSONField(name = "is_set_elm")
     private Boolean setElmFlag = false;
+    @JSONField(name = "set_elm_parent")
     private Integer setElmParent;
 }
