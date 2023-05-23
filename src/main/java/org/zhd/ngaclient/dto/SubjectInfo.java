@@ -30,4 +30,9 @@ public class SubjectInfo {
     private String forumName;
     @JSONField(name = "attachs")
     private List<Attachment> attaches;
+    @JSONField(name = "is_set")
+    private Boolean setFlag;
+    @JSONField(name = "is_set_elm")
+    private Boolean setElmFlag;
+    private Integer setElmParent;
 }
