@@ -31,8 +31,8 @@ public class SubjectInfo {
     @JSONField(name = "attachs")
     private List<Attachment> attaches;
     @JSONField(name = "is_set")
-    private Boolean setFlag;
+    private Boolean setFlag = false;
     @JSONField(name = "is_set_elm")
-    private Boolean setElmFlag;
+    private Boolean setElmFlag = false;
     private Integer setElmParent;
 }
